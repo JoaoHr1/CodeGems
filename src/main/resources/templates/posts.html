@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html lang="PT-BR" xmlns:th="thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>CodeGems</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>CodeGems</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
+
 <body>
-    <header>
-      <nav class="navbar bg-dark" data-bs-theme="dark">
-        <span class="navbar-brand mb-0 h1 " style="font-weight: bold;">CodeGem</span>
+  <header>
+    <nav class="navbar bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-light" href="/posts">CodeGems</a>
         <a href="/newpost" class="btn btn-outline-light" role="button">New Post</a>
+      </div>
+    </nav>
+  </header>
+
+  <section>
+    
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+            <li class="breadcrumb-item active" aria-current="page">Posts</li>
+        </ol>
       </nav>
-    </header>
+      
+      <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
+        <div class="card-body">
+          <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+            <span th:text="${post.author}"></span>
+            <span th:text="${post.date}"></span>
+          </p>
+
+          <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+            <span th:text="${post.title}"></span>
+          </h4>
+          <p class="text-dark" th:text="${post.description}"></p>
+
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>
