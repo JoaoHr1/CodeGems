@@ -2,21 +2,23 @@ package dev.joao.CodeGems.controller;
 
 import dev.joao.CodeGems.model.Post;
 import dev.joao.CodeGems.services.BlogService;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
 public class BlogController {
 
     @Autowired
-    BlogService blogService;
+    public BlogService blogService;
 
     @RequestMapping("/")
     public String index() {
@@ -31,12 +33,18 @@ public class BlogController {
         return mv;
     }
 
-    @GetMapping("/posts/{id}")
-    public ModelAndView getFullPostDescription(@PathVariable Long id) {
-        ModelAndView mv = new ModelAndView("FullPostDescription");
-        Post post = blogService.findById(id);
-        mv.addObject("post", post);
-        return mv;
+    @GetMapping("/newpost")
+    public String getPostForm() {
+        return "postForm";
     }
 
+    @PostMapping("/newpost")
+    public String savePost(@Valid Post post, BindingResult result) {
+        if (result.hasErrors()) {
+            return "redirect:/newpost";
+        }
+        post.setDate(LocalDate.now());
+        blogService.save(post);
+        return "redirect:/posts";
+    }
 }

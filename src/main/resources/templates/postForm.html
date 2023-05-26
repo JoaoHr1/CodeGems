@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>CodeGems</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" href="/posts">CodeGems</a>
+                <a href="/newpost" class="btn btn-outline-light" role="button">New Post</a>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container" style="width: 60%; padding-bottom: 30px;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                    <li class="breadcrumb-item"><a class="text-dark" href="/posts">Post</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">New Post</li>
+                </ol>
+            </nav>
+
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="theme" placeholder="Author *">
+                </div>
+                <div class="row g-3">
+                    <div class="form-group col">
+                        <input type="text" class="form-control" name="title" placeholder="Title *">
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" class="form-control" name="theme" placeholder="Theme *">
+                    </div>
+                </div>
+
+                <textarea id="summernote" type="text" class="form-control" name="description"
+                    placeholder="Description *"></textarea>
+
+                <small class="form-text text-muted">(*) Fields Required</small>
+
+                <div>
+                    <button type="submit" class="btn btn-success" style="margin-top: 10px;">Post</button>
+                    <a href="/posts" class="btn btn-danger" role="button" style="margin-top: 10px;">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Description *',
+            tabsize: 2,
+            height: 250
+        });
+    </script>
+</body>
+
+</html>
