@@ -1,4 +1,6 @@
-### CodegGems is a Java Blog application made with java 17.0.7, Spring-boot 3.1.0, mySQL and Thymeleaf
+### CodeGems is a Java Blog application made with java 17.0.7, Spring-boot 3.1.0, mySQL and Thymeleaf
+
+<h3>-----unfinished project-----</h3>
 
 <h2>Installation</h2>
 
